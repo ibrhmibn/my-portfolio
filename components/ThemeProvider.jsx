@@ -12,12 +12,10 @@ export function ThemeProvider({ children }) {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const stored = localStorage.getItem("theme");
-      if (stored === "dark") {   // Hanya pakai stored, abaikan prefers-color-scheme
-        setDark(true);
-        document.documentElement.classList.add("dark");
-      }
-      // Jika stored === "light" atau tidak ada, biarkan default light (tidak tambah class)
+      // Selalu light, abaikan stored dan prefers
+      setDark(false);
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light"); // opsional: set stored ke light
     }
   }, []);
 
