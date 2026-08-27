@@ -13,10 +13,11 @@ export function ThemeProvider({ children }) {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const stored = localStorage.getItem("theme");
-      if (stored === "dark" || (!stored && matchMedia("(prefers-color-scheme: dark)").matches)) {
+      if (stored === "dark") {   // Hanya pakai stored, abaikan prefers-color-scheme
         setDark(true);
         document.documentElement.classList.add("dark");
       }
+      // Jika stored === "light" atau tidak ada, biarkan default light (tidak tambah class)
     }
   }, []);
 
