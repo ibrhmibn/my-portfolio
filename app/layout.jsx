@@ -2,26 +2,26 @@ import "./globals.css";
 import { ThemeProvider } from "../components/ThemeProvider";
 
 export const metadata = {
-  title: "IBRAHIM PORTFOLIO",
+  title: "Ibrahim Portfolio",
   description: "BSIT graduate specializing in web development, QA, and practical digital solutions.",
   openGraph: {
-    title: "IBRAHIM PORTFOLIO",
+    title: "Ibrahim Portfolio",
     description: "BSIT graduate specializing in web development, QA, and practical digital solutions.",
     url: "https://ibrahim-portfolio.vercel.app",
-    siteName: "IBRAHIM PORTFOLIO",
+    siteName: "Ibrahim Portfolio",
     images: [
       {
         url: "/images/about/profile.png",
         width: 1200,
         height: 630,
-        alt: "IBRAHIM PORTFOLIO",
+        alt: "Ibrahim Portfolio",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "IBRAHIM PORTFOLIO",
+    title: "Ibrahim Portfolio",
     description: "BSIT graduate specializing in web development, QA, and practical digital solutions.",
     images: ["/images/about/profile.png"],
   },
