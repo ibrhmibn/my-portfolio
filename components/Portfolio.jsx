@@ -679,11 +679,11 @@ export default function Portfolio() {
                 <div className="about-profile-stats">
                   <div className="about-stat-item">
                     <span className="about-stat-label">PROJECTS</span>
-                    <span className="about-stat-value">3</span>
+                    <span className="about-stat-value">2</span>
                   </div>
                   <div className="about-stat-item">
                     <span className="about-stat-label">CERTIFICATES</span>
-                    <span className="about-stat-value">9</span>
+                    <span className="about-stat-value">1</span>
                   </div>
                   <div className="about-stat-item">
                     <span className="about-stat-label">STMJ GRADUATED</span>
