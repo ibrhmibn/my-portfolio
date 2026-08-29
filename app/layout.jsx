@@ -1,6 +1,6 @@
 import "./globals.css";
 import { ThemeProvider } from "../components/ThemeProvider";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = {
   title: "Ibrahim Portfolio",
