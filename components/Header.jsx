@@ -51,11 +51,11 @@ export default function Header({ alwaysShowCoffee, alwaysShowBackToTop }) {
     }
   };
 
-  useEffect(() => {
-    if (!coffeePop) return;
-    const id = setTimeout(() => setCoffeePop(false), 400);
-    return () => clearTimeout(id);
-  }, [coffeePop]);
+  // useEffect(() => {
+  //   if (!coffeePop) return;
+  //   const id = setTimeout(() => setCoffeePop(false), 400);
+  //   return () => clearTimeout(id);
+  // }, [coffeePop]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -127,11 +127,11 @@ export default function Header({ alwaysShowCoffee, alwaysShowBackToTop }) {
         </button>
       )}
 
-      <a href="#" className={`coffee-btn${showCoffee ? " coffee-btn--visible" : ""}`} aria-label="Get me a coffee" onClick={handleCoffeeClick}>
+      {/* <a href="#" className={`coffee-btn${showCoffee ? " coffee-btn--visible" : ""}`} aria-label="Get me a coffee" onClick={handleCoffeeClick}>
         <span className="coffee-text">Get me a coffee</span>
         <img src="/images/gif/coffee.gif" alt="Coffee" className={`coffee-gif${coffeePop ? " coffee-gif--pop" : ""}`} />
         <span className="coffee-count">{coffeeLoading ? "..." : coffeeCount}</span>
-      </a>
+      </a> */}
     </>
   );
 }
