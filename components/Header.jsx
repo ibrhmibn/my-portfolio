@@ -9,24 +9,24 @@ export default function Header({ alwaysShowCoffee, alwaysShowBackToTop }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [showCoffee, setShowCoffee] = useState(false);
-  const [coffeeCount, setCoffeeCount] = useState(0);
-  const [coffeePop, setCoffeePop] = useState(false);
-  const [coffeeLoading, setCoffeeLoading] = useState(true);
+  // const [coffeeCount, setCoffeeCount] = useState(0);
+  // const [coffeePop, setCoffeePop] = useState(false);
+  // const [coffeeLoading, setCoffeeLoading] = useState(true);
   const navRef = useRef(null);
 
-  useEffect(() => {
-    let cancelled = false;
-    fetch('/api/coffee-count')
-      .then(res => res.json())
-      .then(data => {
-        if (!cancelled && typeof data.count === 'number') {
-          setCoffeeCount(data.count);
-        }
-        setCoffeeLoading(false);
-      })
-      .catch(() => setCoffeeLoading(false));
-    return () => { cancelled = true; };
-  }, []);
+  // useEffect(() => {
+  //   let cancelled = false;
+  //   fetch('/api/coffee-count')
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       if (!cancelled && typeof data.count === 'number') {
+  //         setCoffeeCount(data.count);
+  //       }
+  //       setCoffeeLoading(false);
+  //     })
+  //     .catch(() => setCoffeeLoading(false));
+  //   return () => { cancelled = true; };
+  // }, []);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
