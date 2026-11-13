@@ -16,6 +16,9 @@ const TECH_LOGOS = {
   "CodeIgniter 4": "/images/logos/codeigniter.png",
   "Python": "/images/logos/python.png",
   "Python Flask": "/images/logos/flask.png",
+  "React": "/images/logos/react.svg",
+  "Next.js": "/images/logos/nextjs.png",
+  "Tailwind CSS": "/images/logos/tailwind.svg",
 };
 
 function TechTag({ tech }) {

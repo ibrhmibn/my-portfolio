@@ -43,6 +43,9 @@ const WHAT_I_CAN_DO = [
       "HTML",
       "CSS",
       "JavaScript",
+      "React",
+      "Next.js",
+      "Tailwind CSS",
     ],
   },
   {
@@ -579,6 +582,14 @@ export default function Portfolio() {
                     <img src="/images/logos/js.png" alt="JavaScript" draggable={false} />
                     <span className="tech-stack-label">JavaScript</span>
                   </div>
+                  <div className="tech-stack-item">
+                    <img src="/images/logos/react.svg" alt="React" draggable={false} />
+                    <span className="tech-stack-label">React</span>
+                  </div>
+                  <div className="tech-stack-item">
+                    <img src="/images/logos/nodejs.png" alt="Node.js" draggable={false} />
+                    <span className="tech-stack-label">Node.js</span>
+                  </div>
                 </div>
                 <div className="tech-stack-column">
                   <div className="tech-stack-item">
@@ -592,6 +603,14 @@ export default function Portfolio() {
                   <div className="tech-stack-item">
                     <img src="/images/logos/python.png" alt="Python" draggable={false} />
                     <span className="tech-stack-label">Python</span>
+                  </div>
+                  <div className="tech-stack-item">
+                    <img src="/images/logos/nextjs.png" alt="Next.js" draggable={false} />
+                    <span className="tech-stack-label">Next.js</span>
+                  </div>
+                  <div className="tech-stack-item">
+                    <img src="/images/logos/tailwind.svg" alt="Tailwind CSS" draggable={false} />
+                    <span className="tech-stack-label">Tailwind CSS</span>
                   </div>
                 </div>
                 <div className="tech-stack-column workspace-column">
@@ -678,7 +697,7 @@ export default function Portfolio() {
                 <div className="about-profile-stats">
                   <div className="about-stat-item">
                     <span className="about-stat-label">PROJECTS</span>
-                    <span className="about-stat-value">2</span>
+                    <span className="about-stat-value">4</span>
                   </div>
                   <div className="about-stat-item">
                     <span className="about-stat-label">CERTIFICATES</span>
@@ -786,21 +805,22 @@ export default function Portfolio() {
           <div className="awards-layout">
             <img src="/images/awards/awards.png" alt="Awards" className="awards-img" />
             <div className="awards-column">
-              <a className="award-item" target="_blank" rel="noopener noreferrer">
+
+              <div className="award-item" style={{ cursor: 'default' }}>
                 <div className="award-icon"><GraduationCap size={18} /></div>
-                <div className="award-title">Alumni SMKN 1 Jenangan</div>
-                <ExternalLink size={12} style={{ marginLeft: 'auto', flexShrink: 0 }} />
-              </a>
-              <a className="award-item" target="_blank" rel="noopener noreferrer">
+                <div className="award-title">Dean's List — UIN Ponorogo</div>
+              </div>
+
+              <div className="award-item" style={{ cursor: 'default' }}>
                 <div className="award-icon"><Trophy size={18} /></div>
-                <div className="award-title">1st place at Kumite Karate Dandim Cup 2025</div>
-                <ExternalLink size={12} style={{ marginLeft: 'auto', flexShrink: 0 }} />
-              </a>
-              <a className="award-item" target="_blank" rel="noopener noreferrer">
+                <div className="award-title">Best Capstone Project</div>
+              </div>
+
+              <div className="award-item" style={{ cursor: 'default' }}>
                 <div className="award-icon"><Trophy size={18} /></div>
-                <div className="award-title">2nd place at Kata Karate Dandim Cup 2025</div>
-                <ExternalLink size={12} style={{ marginLeft: 'auto', flexShrink: 0 }} />
-              </a>
+                <div className="award-title">Sertifikasi Frontend Developer</div>
+              </div>
+
             </div>
           </div>
         </Reveal>
@@ -903,6 +923,17 @@ export default function Portfolio() {
                   <div className="contact-card-info">
                     <div className="contact-card-label">X</div>
                     <div className="contact-card-value">@ibrhmibn</div>
+                  </div>
+                  <ExternalLink size={16} className="contact-card-arrow" />
+                </a>
+              </Reveal>
+              <Reveal delay={440}>
+                <a href="https://github.com/ibrhmibn" className="contact-card" target="_blank" rel="noopener noreferrer">
+                  <span className="contact-card-number">04</span>
+                  <div className="contact-card-icon"><Github size={20} /></div>
+                  <div className="contact-card-info">
+                    <div className="contact-card-label">GITHUB</div>
+                    <div className="contact-card-value">ibrhmibn</div>
                   </div>
                   <ExternalLink size={16} className="contact-card-arrow" />
                 </a>
