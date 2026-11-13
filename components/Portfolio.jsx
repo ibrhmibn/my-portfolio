@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
-import { Github, Mail, ExternalLink, X, Code2, FlaskConical, Rocket, Trophy, GraduationCap, Linkedin, Minus, Instagram, X as XLogo, Twitter } from "lucide-react";
+import { Github, Mail, ExternalLink, X, Code2, FlaskConical, Rocket, Trophy, GraduationCap, Linkedin, Minus, Instagram, X as XLogo, Twitter, InstagramIcon } from "lucide-react";
 import Link from "next/link";
 import { PROJECTS } from "../lib/projects";
 import Header from "./Header";
@@ -23,8 +23,8 @@ const SKILLS = [
     items: ["JavaScript", "jQuery", "Bootstrap", "Chart.js dashboards", "Responsive layouts"],
   },
   {
-    group: "Domain",
-    items: ["LGU payroll & compliance", "Disaster relief logistics", "Resident records", "Fleet & transit systems"],
+    group: "Craft",
+    items: ["Clean Code", "Responsive Design", "UI Precision", "Performance Optimization", "Accessibility"],
   },
 ];
 
@@ -46,16 +46,16 @@ const WHAT_I_CAN_DO = [
     ],
   },
   {
-    group: "Karate Martial Arts",
-    description: "Teaching and training in traditional Shotokan Karate, emphasizing discipline, focus, and physical fitness, while fostering a supportive and motivating environment for students of all levels.",
+    group: "Digital Craftsmanship",
+    description: "Treating every line of code like a craftsman treats raw material — with patience, precision, and pride in the details. Focused on building clean, maintainable, and user-friendly interfaces that feel effortless to use.",
     visual: "va",
     items: [
-      "Karate Training",
-      "Discipline & Focus",
-      "Physical Fitness",
-      "Student Mentorship",
-      "Motivational Coaching",
-      "Event Organization"
+      "Clean Code",
+      "UI Precision",
+      "Responsive Design",
+      "Detail-Oriented",
+      "Performance Tuning",
+      "Pixel-Perfect Layouts"
     ],
   },
 ];
@@ -63,7 +63,7 @@ const WHAT_I_CAN_DO = [
 const SOCIALS = [
   { label: "Email", value: "ibrahimtyo39@gmail.com", href: "mailto:ibrahimtyo39@gmail.com", icon: Mail, color: "#000000" },
   { label: "GitHub", value: "github.com/ibrhmibn", href: "https://github.com/ibrhmibn", icon: Github, color: "#000000" },
-  { label: "Instagram", value: "instagram.com/ibnu_satryo", href: "https://www.instagram.com/ibnu_satryo/", icon: Linkedin, color: "#000000" },
+  { label: "Instagram", value: "instagram.com/ibnu_satryo", href: "https://www.instagram.com/ibnu_satryo/", icon: Instagram, color: "#000000" },
 ];
 
 const CARDS = [
@@ -71,12 +71,12 @@ const CARDS = [
   "Detail-Oriented",
   "Reliable",
   "Organized",
-  "Karate Trainer",
+  "Digital Craftsman",
   "Quick Learner",
   "Creative",
   "Adaptable",
   "User-Focused",
-  "Master of Ceremony",
+  "Problem Solver",
 ];
 
 // Fixed "chaotic" rotation/offset per card so each trait keeps its own
@@ -96,9 +96,9 @@ const CARD_SCATTER = [
 ];
 
 const CURRENTLY = [
-  { icon: Code2, label: "Learning", detail: "Frontend Developer" },
+  { icon: Code2, label: "Building", detail: "Frontend Projects" },
   { icon: FlaskConical, label: "Studying", detail: "UIN Ponorogo" },
-  { icon: Rocket, label: "Trainer", detail: "Karate Instructor" },
+  { icon: Rocket, label: "Crafting", detail: "Clean Interfaces" },
 ];
 
 // const EXPERIENCE = [
@@ -382,51 +382,51 @@ export default function Portfolio() {
 
   return (
     <div
-  ref={rootRef}
-  className="portfolio-root"
->
-      <svg className="bg-lines" viewBox="0 0 1440 5000" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style={{width:'100%',height:'100%'}}>
+      ref={rootRef}
+      className="portfolio-root"
+    >
+      <svg className="bg-lines" viewBox="0 0 1440 5000" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style={{ width: '100%', height: '100%' }}>
         <g opacity="0.28">
-          <path d="M-100 200 C 200 100, 500 300, 800 200 C 1100 100, 1300 280, 1540 180" stroke="var(--light-gray)" strokeWidth="1.5" fill="none"/>
-          <path d="M0 350 C 300 250, 600 400, 900 320 C 1200 240, 1400 380, 1440 300" stroke="var(--light-gray)" strokeWidth="1" fill="none"/>
-          <path d="M-80 500 C 240 420, 540 580, 840 500 C 1140 420, 1360 560, 1500 480" stroke="var(--light-gray)" strokeWidth="1.5" fill="none"/>
+          <path d="M-100 200 C 200 100, 500 300, 800 200 C 1100 100, 1300 280, 1540 180" stroke="var(--light-gray)" strokeWidth="1.5" fill="none" />
+          <path d="M0 350 C 300 250, 600 400, 900 320 C 1200 240, 1400 380, 1440 300" stroke="var(--light-gray)" strokeWidth="1" fill="none" />
+          <path d="M-80 500 C 240 420, 540 580, 840 500 C 1140 420, 1360 560, 1500 480" stroke="var(--light-gray)" strokeWidth="1.5" fill="none" />
         </g>
         <g opacity="0.32">
-          <path d="M0 700 C 320 620, 620 780, 920 700 C 1220 620, 1420 760, 1440 680" stroke="var(--light-gray)" strokeWidth="1" fill="none"/>
-          <path d="M-100 850 C 260 780, 560 920, 860 860 C 1160 800, 1380 940, 1540 880" stroke="var(--light-gray)" strokeWidth="1.5" fill="none"/>
-          <path d="M0 1000 C 300 940, 600 1060, 900 1000 C 1200 940, 1400 1080, 1440 1020" stroke="var(--light-gray)" strokeWidth="1" fill="none"/>
+          <path d="M0 700 C 320 620, 620 780, 920 700 C 1220 620, 1420 760, 1440 680" stroke="var(--light-gray)" strokeWidth="1" fill="none" />
+          <path d="M-100 850 C 260 780, 560 920, 860 860 C 1160 800, 1380 940, 1540 880" stroke="var(--light-gray)" strokeWidth="1.5" fill="none" />
+          <path d="M0 1000 C 300 940, 600 1060, 900 1000 C 1200 940, 1400 1080, 1440 1020" stroke="var(--light-gray)" strokeWidth="1" fill="none" />
         </g>
         <g opacity="0.22">
-          <path d="M-120 1250 C 200 1180, 500 1320, 820 1260 C 1140 1200, 1340 1340, 1560 1280" stroke="var(--light-gray)" strokeWidth="1.5" fill="none"/>
-          <path d="M0 1400 C 280 1340, 580 1460, 880 1400 C 1180 1340, 1380 1480, 1440 1420" stroke="var(--light-gray)" strokeWidth="1" fill="none"/>
-          <path d="M-60 1550 C 240 1490, 540 1610, 840 1550 C 1140 1490, 1360 1630, 1500 1570" stroke="var(--light-gray)" strokeWidth="1.5" fill="none"/>
-          <path d="M0 1700 C 320 1640, 620 1760, 920 1700 C 1220 1640, 1420 1780, 1440 1720" stroke="var(--light-gray)" strokeWidth="1" fill="none"/>
+          <path d="M-120 1250 C 200 1180, 500 1320, 820 1260 C 1140 1200, 1340 1340, 1560 1280" stroke="var(--light-gray)" strokeWidth="1.5" fill="none" />
+          <path d="M0 1400 C 280 1340, 580 1460, 880 1400 C 1180 1340, 1380 1480, 1440 1420" stroke="var(--light-gray)" strokeWidth="1" fill="none" />
+          <path d="M-60 1550 C 240 1490, 540 1610, 840 1550 C 1140 1490, 1360 1630, 1500 1570" stroke="var(--light-gray)" strokeWidth="1.5" fill="none" />
+          <path d="M0 1700 C 320 1640, 620 1760, 920 1700 C 1220 1640, 1420 1780, 1440 1720" stroke="var(--light-gray)" strokeWidth="1" fill="none" />
         </g>
         <g opacity="0.3">
-          <path d="M-140 1950 C 220 1880, 520 2020, 860 1960 C 1200 1900, 1400 2040, 1580 1980" stroke="var(--light-gray)" strokeWidth="1.5" fill="none"/>
-          <path d="M0 2100 C 300 2040, 600 2160, 900 2100 C 1200 2040, 1400 2180, 1440 2120" stroke="var(--light-gray)" strokeWidth="1" fill="none"/>
-          <path d="M-80 2250 C 240 2190, 540 2310, 840 2250 C 1140 2190, 1360 2330, 1500 2270" stroke="var(--light-gray)" strokeWidth="1.5" fill="none"/>
+          <path d="M-140 1950 C 220 1880, 520 2020, 860 1960 C 1200 1900, 1400 2040, 1580 1980" stroke="var(--light-gray)" strokeWidth="1.5" fill="none" />
+          <path d="M0 2100 C 300 2040, 600 2160, 900 2100 C 1200 2040, 1400 2180, 1440 2120" stroke="var(--light-gray)" strokeWidth="1" fill="none" />
+          <path d="M-80 2250 C 240 2190, 540 2310, 840 2250 C 1140 2190, 1360 2330, 1500 2270" stroke="var(--light-gray)" strokeWidth="1.5" fill="none" />
         </g>
         <g opacity="0.26">
-          <path d="M0 2500 C 320 2440, 620 2560, 920 2500 C 1220 2440, 1420 2580, 1440 2520" stroke="var(--light-gray)" strokeWidth="1" fill="none"/>
-          <path d="M-100 2650 C 260 2590, 560 2710, 860 2650 C 1160 2590, 1380 2730, 1540 2670" stroke="var(--light-gray)" strokeWidth="1.5" fill="none"/>
-          <path d="M0 2800 C 300 2740, 600 2860, 900 2800 C 1200 2740, 1400 2880, 1440 2820" stroke="var(--light-gray)" strokeWidth="1" fill="none"/>
-          <path d="M-60 2950 C 240 2890, 540 3010, 840 2950 C 1140 2890, 1360 3030, 1500 2970" stroke="var(--light-gray)" strokeWidth="1.5" fill="none"/>
+          <path d="M0 2500 C 320 2440, 620 2560, 920 2500 C 1220 2440, 1420 2580, 1440 2520" stroke="var(--light-gray)" strokeWidth="1" fill="none" />
+          <path d="M-100 2650 C 260 2590, 560 2710, 860 2650 C 1160 2590, 1380 2730, 1540 2670" stroke="var(--light-gray)" strokeWidth="1.5" fill="none" />
+          <path d="M0 2800 C 300 2740, 600 2860, 900 2800 C 1200 2740, 1400 2880, 1440 2820" stroke="var(--light-gray)" strokeWidth="1" fill="none" />
+          <path d="M-60 2950 C 240 2890, 540 3010, 840 2950 C 1140 2890, 1360 3030, 1500 2970" stroke="var(--light-gray)" strokeWidth="1.5" fill="none" />
         </g>
         <g opacity="0.34">
-          <path d="M-120 3250 C 200 3180, 500 3320, 820 3260 C 1140 3200, 1340 3340, 1560 3280" stroke="var(--light-gray)" strokeWidth="1.5" fill="none"/>
-          <path d="M0 3400 C 280 3340, 580 3460, 880 3400 C 1180 3340, 1380 3480, 1440 3420" stroke="var(--light-gray)" strokeWidth="1" fill="none"/>
-          <path d="M-80 3550 C 240 3490, 540 3610, 840 3550 C 1140 3490, 1360 3630, 1500 3570" stroke="var(--light-gray)" strokeWidth="1.5" fill="none"/>
-          <path d="M0 3700 C 320 3640, 620 3760, 920 3700 C 1220 3640, 1420 3780, 1440 3720" stroke="var(--light-gray)" strokeWidth="1" fill="none"/>
+          <path d="M-120 3250 C 200 3180, 500 3320, 820 3260 C 1140 3200, 1340 3340, 1560 3280" stroke="var(--light-gray)" strokeWidth="1.5" fill="none" />
+          <path d="M0 3400 C 280 3340, 580 3460, 880 3400 C 1180 3340, 1380 3480, 1440 3420" stroke="var(--light-gray)" strokeWidth="1" fill="none" />
+          <path d="M-80 3550 C 240 3490, 540 3610, 840 3550 C 1140 3490, 1360 3630, 1500 3570" stroke="var(--light-gray)" strokeWidth="1.5" fill="none" />
+          <path d="M0 3700 C 320 3640, 620 3760, 920 3700 C 1220 3640, 1420 3780, 1440 3720" stroke="var(--light-gray)" strokeWidth="1" fill="none" />
         </g>
         <g opacity="0.24">
-          <path d="M-100 4050 C 260 3990, 560 4110, 860 4050 C 1160 3990, 1380 4130, 1540 4070" stroke="var(--light-gray)" strokeWidth="1.5" fill="none"/>
-          <path d="M0 4200 C 300 4140, 600 4260, 900 4200 C 1200 4140, 1400 4280, 1440 4220" stroke="var(--light-gray)" strokeWidth="1" fill="none"/>
-          <path d="M-60 4350 C 240 4290, 540 4410, 840 4350 C 1140 4290, 1360 4430, 1500 4370" stroke="var(--light-gray)" strokeWidth="1.5" fill="none"/>
+          <path d="M-100 4050 C 260 3990, 560 4110, 860 4050 C 1160 3990, 1380 4130, 1540 4070" stroke="var(--light-gray)" strokeWidth="1.5" fill="none" />
+          <path d="M0 4200 C 300 4140, 600 4260, 900 4200 C 1200 4140, 1400 4280, 1440 4220" stroke="var(--light-gray)" strokeWidth="1" fill="none" />
+          <path d="M-60 4350 C 240 4290, 540 4410, 840 4350 C 1140 4290, 1360 4430, 1500 4370" stroke="var(--light-gray)" strokeWidth="1.5" fill="none" />
         </g>
         <g opacity="0.3">
-          <path d="M-140 4600 C 220 4540, 520 4660, 860 4600 C 1200 4540, 1400 4680, 1580 4620" stroke="var(--light-gray)" strokeWidth="1.5" fill="none"/>
-          <path d="M0 4750 C 300 4690, 600 4810, 900 4750 C 1200 4690, 1400 4830, 1440 4770" stroke="var(--light-gray)" strokeWidth="1" fill="none"/>
+          <path d="M-140 4600 C 220 4540, 520 4660, 860 4600 C 1200 4540, 1400 4680, 1580 4620" stroke="var(--light-gray)" strokeWidth="1.5" fill="none" />
+          <path d="M0 4750 C 300 4690, 600 4810, 900 4750 C 1200 4690, 1400 4830, 1440 4770" stroke="var(--light-gray)" strokeWidth="1" fill="none" />
         </g>
       </svg>
       <Header />
@@ -434,7 +434,7 @@ export default function Portfolio() {
       {/* HERO */}
       <section id="hero" className="hero-root" ref={heroRef}>
 
-<div className="bg-name-marquee">
+        <div className="bg-name-marquee">
           <div className="bg-name-track" ref={marqueeTrackRef}>
             <span className="bg-name-text">IBRAHIM IBNU SATRYO</span>
             <span className="bg-name-text">IBRAHIM IBNU SATRYO</span>
@@ -501,18 +501,17 @@ export default function Portfolio() {
 
                 const style = isCenter
                   ? {
-                      transform: "translate(-50%, -50%) scale(1)",
-                      zIndex: 5,
-                      opacity: 1,
-                    }
+                    transform: "translate(-50%, -50%) scale(1)",
+                    zIndex: 5,
+                    opacity: 1,
+                  }
                   : {
-                      transform: `translate(calc(-50% + ${
-                        dir * (200 + (distance - 1) * 130)
+                    transform: `translate(calc(-50% + ${dir * (200 + (distance - 1) * 130)
                       }px), -50%) scale(${Math.max(0.55, 1 - distance * 0.28)})`,
-                      zIndex: 5 - distance,
-                      opacity: distance <= 2 ? Math.max(0, 0.85 - (distance - 1) * 0.55) : 0,
-                      pointerEvents: distance <= 2 ? "auto" : "none",
-                    };
+                    zIndex: 5 - distance,
+                    opacity: distance <= 2 ? Math.max(0, 0.85 - (distance - 1) * 0.55) : 0,
+                    pointerEvents: distance <= 2 ? "auto" : "none",
+                  };
 
                 return (
                   <div
@@ -618,9 +617,9 @@ export default function Portfolio() {
                     <img src="/images/workspace/capcut.png" alt="CapCut" draggable={false} />
                     <span className="tech-stack-label">CapCut</span>
                   </div>
-            </div>
-          </div>
-        </Reveal>
+                </div>
+              </div>
+            </Reveal>
           </div>
 
           <div className="what-i-can-do-right">
@@ -662,7 +661,7 @@ export default function Portfolio() {
       <section id="about" className="section">
         <Reveal>
           <div className="section-label">ABOUT ME</div>
-          <TypewriterTitle text={isMobile ? "Frontend Dev.\nTrainer." : "Frontend Developer. Trainer."} />
+          <TypewriterTitle text={isMobile ? "Frontend Dev.\nCraftsman." : "Frontend Developer. Craftsman."} />
         </Reveal>
 
         <Reveal delay={100}>
@@ -692,7 +691,7 @@ export default function Portfolio() {
                 </div>
                 <div className="about-description">
                   <p>
-                    I am a dedicated and versatile professional with a strong foundation in web development, quality assurance, and digital solutions. My passion lies in creating efficient systems and workflows that enhance productivity and user experience. With a keen eye for detail and a commitment to continuous learning, I strive to deliver high-quality results in every project I undertake.
+                    I am a frontend developer who believes that great digital products are built the way a craftsman builds furniture — with patience, precision, and pride in every detail. I focus on creating clean, maintainable interfaces that feel effortless to use, combining technical skill with an eye for design. Every project is an opportunity to refine my craft, learn something new, and deliver work that speaks for itself.
                   </p>
                 </div>
               </div>
@@ -725,47 +724,47 @@ export default function Portfolio() {
                   onMouseEnter={() => setCardPaused(true)}
                   onMouseLeave={() => setCardPaused(false)}
                 >
-                {CARDS.map((trait, i) => {
-                  const offset = (i - cardIndex + CARDS.length) % CARDS.length;
-                  const isExiting = offset === CARDS.length - 1;
-                  // Only the front 3 cards and the one that just got flicked away are rendered.
-                  if (offset > 2 && !isExiting) return null;
+                  {CARDS.map((trait, i) => {
+                    const offset = (i - cardIndex + CARDS.length) % CARDS.length;
+                    const isExiting = offset === CARDS.length - 1;
+                    // Only the front 3 cards and the one that just got flicked away are rendered.
+                    if (offset > 2 && !isExiting) return null;
 
-                  const scatter = CARD_SCATTER[i];
-                  let style;
+                    const scatter = CARD_SCATTER[i];
+                    let style;
 
-                  if (isExiting) {
-                    style = {
-                      "--tx": `${scatter.x + 140}px`,
-                      "--ty": `${scatter.y - 60}px`,
-                      "--rot": `${scatter.rot + 40}deg`,
-                      "--sc": 0.85,
-                      "--op": 0,
-                      zIndex: 5,
-                    };
-                  } else {
-                    const depth = offset;
-                    style = {
-                      "--tx": `${scatter.x + depth * 10}px`,
-                      "--ty": `${scatter.y + depth * 8}px`,
-                      "--rot": `${scatter.rot + depth * (scatter.rot >= 0 ? 5 : -5)}deg`,
-                      "--sc": 1 - depth * 0.045,
-                      "--op": depth === 0 ? 1 : 0.55 + (2 - depth) * 0.15,
-                      zIndex: 30 - depth * 10,
-                    };
-                  }
+                    if (isExiting) {
+                      style = {
+                        "--tx": `${scatter.x + 140}px`,
+                        "--ty": `${scatter.y - 60}px`,
+                        "--rot": `${scatter.rot + 40}deg`,
+                        "--sc": 0.85,
+                        "--op": 0,
+                        zIndex: 5,
+                      };
+                    } else {
+                      const depth = offset;
+                      style = {
+                        "--tx": `${scatter.x + depth * 10}px`,
+                        "--ty": `${scatter.y + depth * 8}px`,
+                        "--rot": `${scatter.rot + depth * (scatter.rot >= 0 ? 5 : -5)}deg`,
+                        "--sc": 1 - depth * 0.045,
+                        "--op": depth === 0 ? 1 : 0.55 + (2 - depth) * 0.15,
+                        zIndex: 30 - depth * 10,
+                      };
+                    }
 
-                  return (
-                    <div
-                      key={trait}
-                      className={`card-stack-card${offset === 0 ? " card-stack-card-front" : ""}`}
-                      style={style}
-                    >
-                      <div className="card-stack-label">TRAIT</div>
-                      <div className="card-stack-value">{trait}</div>
-                    </div>
-                  );
-                })}
+                    return (
+                      <div
+                        key={trait}
+                        className={`card-stack-card${offset === 0 ? " card-stack-card-front" : ""}`}
+                        style={style}
+                      >
+                        <div className="card-stack-label">TRAIT</div>
+                        <div className="card-stack-value">{trait}</div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -864,7 +863,7 @@ export default function Portfolio() {
             </Reveal>
             <Reveal delay={300}>
               <p className="contact-secondary">
-                I am open to freelance, contract, and full-time opportunities. If you have a project or role that aligns with my skills and experience, I would love to hear from you. Let's collaborate to create something impactful and innovative.
+                I am open to freelance, contract, and full-time opportunities. If you have a project that deserves careful craftsmanship — clean code, thoughtful design, and attention to detail — I would love to hear from you. Let's build something worth keeping.
               </p>
             </Reveal>
             {/* <Reveal delay={400}>
@@ -957,20 +956,20 @@ export default function Portfolio() {
 
                   setFormStatus("submitting");
 
-                   try {
-                     await fetch('https://script.google.com/macros/s/AKfycbwV9F9HUEoiTJ0uZ0bKT80D991zShqlqfz6vBxtNVDVQBm4q1nVOnRFRSwDtRDetdJ4/exec', {
-                       method: 'POST',
-                       mode: 'no-cors',
-                       headers: { 'Content-Type': 'application/json' },
-                       body: JSON.stringify(data),
-                     });
-                     setFormStatus("success");
-                     form.reset();
-                     setIsModalOpen(false);
-                     setShowSuccessModal(true);
-                   } catch (error) {
-                     setFormStatus("error");
-                   }
+                  try {
+                    await fetch('https://script.google.com/macros/s/AKfycbwV9F9HUEoiTJ0uZ0bKT80D991zShqlqfz6vBxtNVDVQBm4q1nVOnRFRSwDtRDetdJ4/exec', {
+                      method: 'POST',
+                      mode: 'no-cors',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify(data),
+                    });
+                    setFormStatus("success");
+                    form.reset();
+                    setIsModalOpen(false);
+                    setShowSuccessModal(true);
+                  } catch (error) {
+                    setFormStatus("error");
+                  }
                 }}
               >
                 <div className="contact-modal-field">
