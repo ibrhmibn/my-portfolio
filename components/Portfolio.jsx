@@ -139,65 +139,14 @@ function Sparkle({ style, children = "✦" }) {
   );
 }
 
-/* ---------- Stack gambar mobile (logika tidak berubah) ---------- */
-
-function WorkAlbumStack({ projects, activeIndex, onAdvance }) {
-  const count = projects.length;
-
-  return (
-    <div className="work-mobile-stack" onClick={onAdvance}>
-      {projects.map((project, i) => {
-        const offset = (i - activeIndex + count) % count;
-        const isExiting = offset === count - 1;
-        if (offset > 2 && !isExiting) return null;
-
-        const scatter = CARD_SCATTER[i % CARD_SCATTER.length];
-        let style;
-
-        if (isExiting) {
-          style = {
-            "--tx": `${scatter.x + 100}px`,
-            "--ty": `${scatter.y - 40}px`,
-            "--rot": `${scatter.rot + 25}deg`,
-            "--sc": 0.88,
-            "--op": 0,
-            zIndex: 5,
-          };
-        } else {
-          const depth = offset;
-          const isFront = depth === 0;
-          const calm = 0.4;
-          const dir = depth % 2 === 1 ? -1 : 1;
-          style = {
-            "--tx": isFront ? "0px" : `${scatter.x * calm + depth * 8}px`,
-            "--ty": isFront ? "0px" : `${scatter.y * calm + dir * depth * 10}px`,
-            "--rot": isFront ? "0deg" : `${scatter.rot * calm + depth * (scatter.rot >= 0 ? 1.5 : -1.5)}deg`,
-            "--sc": isFront ? 1 : 1 - depth * 0.06,
-            "--op": isFront ? 1 : 0.75 - (depth - 1) * 0.2,
-            zIndex: 30 - depth * 10,
-          };
-        }
-
-        return (
-          <img
-            key={project.num}
-            src={project.image}
-            alt={project.title}
-            className={`stacked-image${offset === 0 ? " stacked-image-front" : ""}`}
-            style={style}
-            draggable={false}
-          />
-        );
-      })}
-    </div>
-  );
-}
-
 export default function Portfolio() {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const rootRef = useRef(null);
   const marqueeTrackRef = useRef(null);
   const heroRef = useRef(null);
+  const albumRef = useRef(null);
+  const touchX = useRef(null);
+  const [albumScale, setAlbumScale] = useState(1);
   const [activeIndex, setActiveIndex] = useState(1);
   const [cardIndex, setCardIndex] = useState(0);
   const [cardPaused, setCardPaused] = useState(false);
@@ -245,9 +194,30 @@ export default function Portfolio() {
     };
 
     syncMarqueeSpeed();
+    // Font Press Start 2P dimuat async -> hitung ulang setelah font siap
     if (document.fonts?.ready) document.fonts.ready.then(syncMarqueeSpeed);
     window.addEventListener("resize", syncMarqueeSpeed);
     return () => window.removeEventListener("resize", syncMarqueeSpeed);
+  }, []);
+
+  // Carousel Work Gallery: tampilan sama persis dengan desktop, hanya diperkecil
+  // proporsional agar pas di lebar layar (desktop = skala 1).
+  useEffect(() => {
+    const el = albumRef.current;
+    if (!el) return;
+    const BASE_WIDTH = 720;
+    const update = () => setAlbumScale(Math.min(1, el.clientWidth / BASE_WIDTH));
+    update();
+    window.addEventListener("resize", update);
+    let ro;
+    if (typeof ResizeObserver !== "undefined") {
+      ro = new ResizeObserver(update);
+      ro.observe(el);
+    }
+    return () => {
+      window.removeEventListener("resize", update);
+      ro?.disconnect();
+    };
   }, []);
 
   useEffect(() => {
@@ -293,7 +263,7 @@ export default function Portfolio() {
             <div className="crt-screen">
               <img src="/images/profile.png" alt="IBRAHIM IBNU SATRYO" className="profile-image" draggable={false} />
               <div className="crt-scanlines" />
-              <div className="crt-titlebar">C:\IBRAHIM\GUWAGANTENG.PNG</div>
+              <div className="crt-titlebar">C:\IBRAHIM\PROFILE.PNG</div>
             </div>
             <div className="crt-plate">
               <span>IB-9000</span>
@@ -337,8 +307,19 @@ export default function Portfolio() {
           </Reveal>
 
           <Reveal delay={100}>
-            <div className="work-album">
-              <div className="work-album-inner">
+            <div
+              className="work-album"
+              ref={albumRef}
+              style={{ height: 260 * albumScale + 24 }}
+              onTouchStart={(e) => { touchX.current = e.touches[0].clientX; }}
+              onTouchEnd={(e) => {
+                if (touchX.current == null) return;
+                const dx = e.changedTouches[0].clientX - touchX.current;
+                touchX.current = null;
+                if (Math.abs(dx) > 40) goTo(activeIndex + (dx < 0 ? 1 : -1));
+              }}
+            >
+              <div className="work-album-inner" style={{ transform: `scale(${albumScale})` }}>
                 {PROJECTS.map((project, index) => {
                   const total = PROJECTS.length;
 
@@ -352,11 +333,11 @@ export default function Portfolio() {
                   const style = isCenter
                     ? { transform: "translate(-50%, -50%) scale(1)", zIndex: 5, opacity: 1 }
                     : {
-                        transform: `translate(calc(-50% + ${dir * (200 + (distance - 1) * 130)}px), -50%) scale(${Math.max(0.55, 1 - distance * 0.28)})`,
-                        zIndex: 5 - distance,
-                        opacity: distance <= 2 ? Math.max(0, 0.85 - (distance - 1) * 0.55) : 0,
-                        pointerEvents: distance <= 2 ? "auto" : "none",
-                      };
+                      transform: `translate(calc(-50% + ${dir * (200 + (distance - 1) * 130)}px), -50%) scale(${Math.max(0.55, 1 - distance * 0.28)})`,
+                      zIndex: 5 - distance,
+                      opacity: distance <= 2 ? Math.max(0, 0.85 - (distance - 1) * 0.55) : 0,
+                      pointerEvents: distance <= 2 ? "auto" : "none",
+                    };
 
                   return (
                     <div
@@ -380,12 +361,6 @@ export default function Portfolio() {
                   );
                 })}
               </div>
-            </div>
-          </Reveal>
-
-          <Reveal delay={150}>
-            <div className="work-mobile-stack-wrap">
-              <WorkAlbumStack projects={PROJECTS} activeIndex={activeIndex} onAdvance={() => goTo(activeIndex + 1)} />
             </div>
           </Reveal>
 
@@ -436,7 +411,7 @@ export default function Portfolio() {
             {WHAT_I_CAN_DO.map((group, index) => (
               <Reveal key={group.group} delay={150 + index * 120}>
                 <RetroWindow
-                  title={`0${index + 1}_${group.group.replace(/\s+/g, "_").toUpperCase()}.DLL`}
+                  title={`0${index + 1}_${group.group.replace(/\s+/g, "_").toUpperCase()}`}
                   className={`bento-card ${group.size === "large" ? "bento-large" : "bento-medium"}`}
                   bodyClassName="bento-body"
                 >

@@ -130,7 +130,6 @@ label,
 summary,
 [role="button"],
 .card-stack-container,
-.work-mobile-stack,
 .work-album-item {
   cursor: var(--cursor-hand);
 }
@@ -919,17 +918,18 @@ body::after {
 .work-album {
   position: relative;
   width: 100%;
-  min-height: 270px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 0;
+  overflow: hidden;
+  touch-action: pan-y;
 }
 .work-album-inner {
   position: relative;
-  width: 100%;
-  max-width: 720px;
+  flex: 0 0 720px;
+  width: 720px;
   height: 260px;
+  transform-origin: center center;
 }
 .work-album-item {
   position: absolute;
@@ -987,10 +987,6 @@ body::after {
   animation: glitch 0.3s steps(2) 1;
 }
 
-.work-mobile-stack-wrap {
-  display: none;
-}
-
 .work-info {
   max-width: 820px;
   margin: 24px auto 0;
@@ -1021,8 +1017,8 @@ body::after {
    -------------------------------------------------------------------------- */
 .what-i-can-do-grid {
   display: grid;
-  grid-template-columns: 2fr 3fr;
-  gap: 40px;
+  grid-template-columns: 1fr;
+  gap: 28px;
   align-items: stretch;
 }
 .what-i-can-do-desc {
@@ -1030,6 +1026,7 @@ body::after {
   line-height: 1.7;
   color: var(--muted);
   margin: 0 0 8px;
+  max-width: 760px;
 }
 
 /* Ikon desktop Windows jadul */
@@ -1072,7 +1069,7 @@ body::after {
 .what-i-can-do-right {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 28px;
+  gap: 20px;
   align-items: stretch;
 }
 .what-i-can-do-right > div {
@@ -2237,21 +2234,12 @@ textarea.contact-modal-input {
   .nav-brand {
     display: none;
   }
-  .what-i-can-do-grid {
-    grid-template-columns: 1fr;
-  }
-  .what-i-can-do-right {
-    grid-template-columns: 1fr 1fr;
-  }
 }
 
 @media (max-width: 900px) {
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 40px;
-  }
-  .what-i-can-do-right {
-    grid-template-columns: 1fr;
   }
 }
 
@@ -2429,24 +2417,8 @@ textarea.contact-modal-input {
     flex-direction: column;
     gap: 14px;
   }
-  .work-album {
-    display: none;
-  }
-  .work-mobile-stack-wrap {
-    display: block;
-    max-width: 320px;
-    margin: 32px auto 0;
-  }
-  .work-mobile-stack {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 17.8 / 10;
-    perspective: 800px;
-    user-select: none;
-    -webkit-user-select: none;
-  }
   .work-info {
-    margin: 48px auto 0;
+    margin: 20px auto 0;
     padding: 16px 12px;
   }
   .work-info-link {
@@ -2462,6 +2434,38 @@ textarea.contact-modal-input {
   .tech-stack-item img {
     width: 30px;
     height: 30px;
+  }
+  .what-i-can-do-grid {
+    gap: 20px;
+  }
+  .what-i-can-do-right {
+    gap: 14px;
+  }
+  .bento-body {
+    padding: 14px;
+  }
+  .bento-number {
+    font-size: 22px;
+  }
+  .bento-category {
+    font-size: 16px;
+    max-width: 100px;
+  }
+  .bento-visual {
+    height: 50px;
+    margin-bottom: 10px;
+  }
+  .bento-gif {
+    height: 44px;
+  }
+  .bento-desc {
+    font-size: 12px;
+    line-height: 1.55;
+    margin-bottom: 12px;
+  }
+  .bento-tag {
+    font-size: 14px;
+    padding: 4px 6px;
   }
 
   /* About */
@@ -2613,6 +2617,12 @@ textarea.contact-modal-input {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
+  }
+}
+
+@media (max-width: 560px) {
+  .what-i-can-do-right {
+    grid-template-columns: 1fr;
   }
 }
 
