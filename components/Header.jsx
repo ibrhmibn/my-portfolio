@@ -1,72 +1,36 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { ExternalLink, Menu, X, ArrowUp } from "lucide-react";
+import { Menu, X, ArrowUp } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 
-export default function Header({ alwaysShowCoffee, alwaysShowBackToTop }) {
+const LINKS = [
+  { href: "/#hero", label: "HOME" },
+  { href: "/#work", label: "WORK" },
+  { href: "/#what-i-can-do", label: "WHAT I CAN DO" },
+  { href: "/#about", label: "ABOUT" },
+  { href: "/#awards", label: "AWARDS" },
+];
+
+export default function Header({ alwaysShowBackToTop }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
-  const [showCoffee, setShowCoffee] = useState(false);
-  // const [coffeeCount, setCoffeeCount] = useState(0);
-  // const [coffeePop, setCoffeePop] = useState(false);
-  // const [coffeeLoading, setCoffeeLoading] = useState(true);
   const navRef = useRef(null);
-
-  // useEffect(() => {
-  //   let cancelled = false;
-  //   fetch('/api/coffee-count')
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       if (!cancelled && typeof data.count === 'number') {
-  //         setCoffeeCount(data.count);
-  //       }
-  //       setCoffeeLoading(false);
-  //     })
-  //     .catch(() => setCoffeeLoading(false));
-  //   return () => { cancelled = true; };
-  // }, []);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleCoffeeClick = async (e) => {
-    e.preventDefault();
-    setCoffeePop(true);
-    const previousCount = coffeeCount;
-    const optimisticCount = previousCount + 1;
-    setCoffeeCount(optimisticCount);
-    try {
-      const res = await fetch('/api/coffee-count', { method: 'POST' });
-      const data = await res.json();
-      if (typeof data.count === 'number') {
-        setCoffeeCount(data.count);
-      } else {
-        setCoffeeCount(previousCount);
-      }
-    } catch {
-      setCoffeeCount(previousCount);
-    }
-  };
-
-  // useEffect(() => {
-  //   if (!coffeePop) return;
-  //   const id = setTimeout(() => setCoffeePop(false), 400);
-  //   return () => clearTimeout(id);
-  // }, [coffeePop]);
-
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
       setShowBackToTop(alwaysShowBackToTop || window.scrollY > 400);
-      setShowCoffee(alwaysShowCoffee || window.scrollY > window.innerHeight * 0.5);
     };
     handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [alwaysShowCoffee, alwaysShowBackToTop]);
+  }, [alwaysShowBackToTop]);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -85,39 +49,53 @@ export default function Header({ alwaysShowCoffee, alwaysShowBackToTop }) {
 
   return (
     <>
-      <nav ref={navRef} className={`nav-bar ${scrolled ? "scrolled" : ""} ${menuOpen ? "nav-bar--expanded" : ""}`}>
+      <nav
+        ref={navRef}
+        className={`nav-bar ${scrolled ? "scrolled" : ""} ${menuOpen ? "nav-bar--expanded" : ""}`}
+      >
         <div className="nav-mobile-header">
           <a href="/" className="nav-left">
             <div className="nav-logo">IB</div>
-            <div className="nav-brand">IBRAHIM</div>
+            <div className="nav-brand">IBRAHIM.EXE</div>
           </a>
-          <ThemeToggle className="md:hidden nav-theme-toggle" style={{ position: 'relative', zIndex: 210 }} />
-          <button className="md:hidden nav-menu-btn" onClick={() => setMenuOpen(!menuOpen)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 8, position: 'relative', zIndex: 210 }}>
+          <ThemeToggle className="nav-theme-toggle nav-theme-toggle--mobile" />
+          <button
+            className="nav-menu-btn"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+          >
             {menuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
-        {menuOpen && (
-          <div className="nav-mobile-menu">
-            <div className="nav-mobile-menu-inner">
-              <a href="/#work" className="nav-link" onClick={() => setMenuOpen(false)}>Work</a>
-              <a href="/#what-i-can-do" className="nav-link" onClick={() => setMenuOpen(false)}>What I Can Do</a>
-              <a href="/#about" className="nav-link" onClick={() => setMenuOpen(false)}>About</a>
-              <a href="/#awards" className="nav-link" onClick={() => setMenuOpen(false)}>Awards</a>
-              {/* <a href="/#trainings" className="nav-link" onClick={() => setMenuOpen(false)}>Experience</a> */}
-              <a href="/#contact" className="nav-cta" style={{ textAlign: 'center' }} onClick={() => setMenuOpen(false)}>Hire Me</a>
-            </div>
+
+        {/* Selalu dirender; dibuka/ditutup lewat CSS (.nav-bar--expanded) */}
+        <div className="nav-mobile-menu" aria-hidden={!menuOpen}>
+          <div className="nav-mobile-menu-inner">
+            {LINKS.map((l) => (
+              <a key={l.href} href={l.href} className="nav-link" onClick={() => setMenuOpen(false)}>
+                [ {l.label} ]
+              </a>
+            ))}
+            <a href="/#contact" className="nav-cta" onClick={() => setMenuOpen(false)}>
+              [ HIRE ME ]
+            </a>
           </div>
-        )}
-        <div className="nav-center hidden md:flex">
-          <a href="/#work" className="nav-link">Work</a>
-          <a href="/#what-i-can-do" className="nav-link">What I Can Do</a>
-          <a href="/#about" className="nav-link">About</a>
-          <a href="/#awards" className="nav-link">Awards</a>
-          {/* <a href="/#trainings" className="nav-link">Trainings</a> */}
         </div>
+
+        <div className="nav-center">
+          {LINKS.map((l) => (
+            <a key={l.href} href={l.href} className="nav-link">
+              [ {l.label} ]
+            </a>
+          ))}
+        </div>
+
         <div className="nav-right">
-          <ThemeToggle className="nav-theme-toggle hidden md:inline-flex" style={{ marginRight: 8 }} />
-          <a href="/#contact" className="nav-cta hidden md:block">Hire Me</a>
+          <ThemeToggle className="nav-theme-toggle nav-theme-toggle--desktop" />
+          <a href="/#contact" className="nav-cta">
+            [ HIRE ME ]
+          </a>
         </div>
       </nav>
 
@@ -126,12 +104,6 @@ export default function Header({ alwaysShowCoffee, alwaysShowBackToTop }) {
           <ArrowUp size={20} />
         </button>
       )}
-
-      {/* <a href="#" className={`coffee-btn${showCoffee ? " coffee-btn--visible" : ""}`} aria-label="Get me a coffee" onClick={handleCoffeeClick}>
-        <span className="coffee-text">Get me a coffee</span>
-        <img src="/images/gif/coffee.gif" alt="Coffee" className={`coffee-gif${coffeePop ? " coffee-gif--pop" : ""}`} />
-        <span className="coffee-count">{coffeeLoading ? "..." : coffeeCount}</span>
-      </a> */}
     </>
   );
 }
