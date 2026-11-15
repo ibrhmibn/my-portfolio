@@ -391,7 +391,7 @@ export default function Portfolio() {
             <Reveal>
               <RetroWindow title="MY_COMPUTER" status={`${TECH.length} object(s)`}>
                 <div className="section-label">&gt; MY CAPABILITIES</div>
-                <TypewriterTitle text="What I Can Do" />
+                <TypewriterTitle text="What Can I Do?" />
                 <div className="what-i-can-do-desc">
                   I combine technical, problem-solving, and digital skills to build reliable systems, test systems, manage data, and support efficient digital workflows.
                 </div>
